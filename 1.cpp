@@ -1,23 +1,25 @@
 ﻿#include <iostream>
+#include <string.h>
 #include <cstring>
+#include <stdio.h>
+#include <string>
 using namespace std;
 
 
 
 int main()
 {
-	int size = 10;
+	string s = ;
 	
-	char* expr = new char[size];
-	cin >> expr;
-	int n = strlen(expr);
-	cout << n << endl;
-	for (int i = 0;i <n;i++)
-	{
-		if (expr[i] == '(') 
-		{
+	int size;
+	size = s.length();
+	string* oper = new string[size];
+	
 
-		}
-	}
 	
+
+
+	
+
 }
+	
