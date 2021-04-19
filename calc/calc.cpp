@@ -4,43 +4,29 @@
 
 using namespace std;
 
-float number()
-{
-    int res = 0;
-    while (true)
-    {
-        char c = cin.get();
-        if (c >= '0' && c <= '9')
-            res = res * 10 + c - '0';
-        else
-        {
-            cin.putback(c); //возвращает заданный символ назад во входной поток
-            return res;
-        }
-    }
-}
+float number();
 
 float expr();
 
-float ckobki()
+float ckobki();
+
+float factor();
+
+
+
+
+int main()
 {
-    char c = cin.get();
-    if (c == '(')
-    {
-        float x = expr();
-        cin.get();
-        return x;
-    }
-    else
-    {
-        cin.putback(c);
-        return number();
-    }
+    setlocale(LC_ALL, "ru");
+    cout << "Введите выражение: ";
+    float res = expr();
+    cout << "Ответ = " << res << endl;
+    return 0;
 }
 
 float factor()
 {
-    int x = ckobki();
+    float x = ckobki();
     while (true)
     {
         char c = cin.get();
@@ -58,10 +44,24 @@ float factor()
         }
     }
 }
-
+float ckobki()
+{
+    char c = cin.get();
+    if (c == '(')
+    {
+        float x = expr();
+        cin.get();
+        return x;
+    }
+    else
+    {
+        cin.putback(c);
+        return number();
+    }
+}
 float expr()
 {
-    int x = factor();
+    float x = factor();
     while (true)
     {
         char c = cin.get();
@@ -79,12 +79,18 @@ float expr()
         }
     }
 }
-
-int main()
+float number()
 {
-    setlocale(LC_ALL, "ru");
-    cout << "Введите выражение: ";
-    float res = expr();
-    cout << "Ответ = " << res << endl;
-    return 0;
+    float res = 0;
+    while (true)
+    {
+        char c = cin.get();
+        if (c >= '0' && c <= '9')
+            res = res * 10 + c - '0';
+        else
+        {
+            cin.putback(c); //возвращает заданный символ назад во входной поток
+            return res;
+        }
+    }
 }
